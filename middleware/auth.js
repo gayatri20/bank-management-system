@@ -12,7 +12,7 @@ module.exports = function (req, res, next) {
 
         //decodes it into using private key 
         const decoded = jwt.verify(token, config.get('jwtPrivateKey'));
-
+        
         //storing the payload info for maintaing integrity of user
         req.customer = decoded;
         next();

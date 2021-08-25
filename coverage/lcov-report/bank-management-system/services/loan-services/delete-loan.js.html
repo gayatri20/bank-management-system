@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for bank-management-system/services/loan-services/view-loan.js</title>
+    <title>Code coverage report for bank-management-system/services/loan-services/delete-loan.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">bank-management-system/services/loan-services</a> view-loan.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">bank-management-system/services/loan-services</a> delete-loan.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.36% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/11</span>
+                <span class='fraction'>4/12</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">36.36% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/10</span>
+                <span class='fraction'>4/11</span>
             </div>
         
             
@@ -77,7 +77,9 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
@@ -87,6 +89,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -100,7 +104,7 @@
 <span class="cline-any cline-yes">5x</span></td><td class="text"><pre class="prettyprint lang-js">const { Loan } = require('../../models/loan');
 const _ = require('lodash');
 &nbsp;
-const viewLoan = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
+const deleteLoan = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.setHeader('Content-Type', 'application/json');</span>
 <span class="cstat-no" title="statement not covered" >    try {</span>
@@ -108,16 +112,18 @@ const viewLoan = <span class="fstat-no" title="function not covered" >as</span>y
         // fetch loan depending on account number
         const loan = <span class="cstat-no" title="statement not covered" >await Loan.findOne({ accountNumber: req.customer.accountNumber });</span>
 <span class="cstat-no" title="statement not covered" >        if (!loan) <span class="cstat-no" title="statement not covered" >return res.status(404).send("Apply for Loan");</span></span>
+ 
+<span class="cstat-no" title="statement not covered" >        await Loan.deleteOne({ accountNumber: req.customer.accountNumber }); </span>
 &nbsp;
         //return the data 
-<span class="cstat-no" title="statement not covered" >        return res.status(200).send(_.pick(loan, ['accountNumber', 'loanType', 'loanAmount', 'date', 'roi', 'loanDuration']));</span>
+<span class="cstat-no" title="statement not covered" >        return res.status(200).send(`Customer's Loan with AccountNumber: ${req.customer.accountNumber} is successfully deleted.`);</span>
     }
     catch (e) {
 <span class="cstat-no" title="statement not covered" >        return res.status(400).send(e.message);</span>
     }
 }
 &nbsp;
-module.exports = viewLoan;</pre></td></tr></table></pre>
+module.exports = deleteLoan;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

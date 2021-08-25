@@ -13,7 +13,7 @@ const deleteLoan = async (req, res) => {
         await Loan.deleteOne({ accountNumber: req.customer.accountNumber }); 
 
         //return the data 
-        return res.status(200).send(`Customer account with AccountNumber: ${req.customer.accountNumber} is successfully deleted.`);
+        return res.status(200).send(`Customer's Loan with AccountNumber: ${req.customer.accountNumber} is successfully deleted.`);
     }
     catch (e) {
         return res.status(400).send(e.message);

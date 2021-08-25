@@ -3,11 +3,10 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const mongoose = require('mongoose');
 let server;
+
 describe('customer.generateAuthToken', () => {
     beforeEach(() => { server = require('../../../index'); })
-    afterEach( () => { 
-       server.close();
-    });
+    afterEach( () => {  server.close(); });
 
     it('should return a valid JWT', () => {
         const expectedPayload = {
